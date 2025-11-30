@@ -1,13 +1,31 @@
-import React, { useEffect, useEffectEvent, useState } from "react";
+import { useState } from "react";
 import { Card } from "../Components/Card";
 import { products } from "../data/products";
+import { Cart } from "../Components/Cart";
 
 function Home() {
   const [cart, setCart] = useState({});
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  const getCartItems = () => {
+    return Object.entries(cart).map(([name, quantity]) => {
+      const product = products.find((p) => p.name === name);
+      const price = product?.price ?? 0;
+      return { name: name, quantity: quantity, price: price };
+    });
+  };
+
+  const getCount = () => {
+    if (cart == undefined) return 0;
+
+    let total = 0;
+    for (const dessert in cart) {
+      const element = cart[dessert];
+      if (!Object.hasOwn(cart, dessert)) continue;
+      total += element;
+    }
+
+    return total;
+  };
 
   const handleAddToCart = (productName) => {
     const quantity = cart[productName] || 0;
@@ -36,9 +54,10 @@ function Home() {
             quantity={cart[product.name] || 0}
             addToCart={handleAddToCart}
             decrementItem={decrementItem}
-          ></Card>
+          />
         );
       })}
+      <Cart count={getCount()} cartItems={getCartItems()} />
     </div>
   );
 }
