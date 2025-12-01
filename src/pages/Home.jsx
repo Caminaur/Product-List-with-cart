@@ -2,45 +2,58 @@ import { useState } from "react";
 import { Card } from "../Components/Card";
 import { products } from "../data/products";
 import { Cart } from "../Components/Cart";
+import { useEffect } from "react";
 
 function Home() {
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState([]);
 
-  const getCartItems = () => {
-    return Object.entries(cart).map(([name, quantity]) => {
-      const product = products.find((p) => p.name === name);
-      const price = product?.price ?? 0;
-      return { name: name, quantity: quantity, price: price };
-    });
-  };
+  const getCount = () => cart.reduce((acc, item) => acc + item.quantity, 0);
 
-  const getCount = () => {
-    if (cart == undefined) return 0;
-
-    let total = 0;
-    for (const dessert in cart) {
-      const element = cart[dessert];
-      if (!Object.hasOwn(cart, dessert)) continue;
-      total += element;
-    }
-
-    return total;
-  };
+  const getItemAmount = (name) =>
+    cart.find((a) => a.name === name)?.quantity ?? 0;
 
   const handleAddToCart = (productName) => {
-    const quantity = cart[productName] || 0;
-    setCart((prevCart) => ({
-      ...prevCart,
-      [productName]: quantity + 1,
-    }));
+    const product = products.find((p) => p.name === productName);
+    const price = product?.price ?? 0;
+
+    // verify if product in cart
+    let newProduct = cart.find((p) => p.name === productName);
+    if (!newProduct) {
+      // new product
+      newProduct = { name: productName, price: price, quantity: 1 };
+      setCart((prev) => [...prev, newProduct]);
+    }
+    // edit old one
+    else {
+      setCart((prev) =>
+        prev.map((item) => {
+          if (item.name === productName) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        })
+      );
+    }
   };
 
   const decrementItem = (productName) => {
-    const quantity = cart[productName] || 0;
-    setCart((prevCart) => ({
-      ...prevCart,
-      [productName]: quantity - 1,
-    }));
+    const currentItem = cart.find((d) => d.name === productName);
+    if (currentItem.quantity === 1) {
+      setCart((prevCart) => prevCart.filter((w) => w.name !== productName));
+    } else {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.name === productName
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+      );
+    }
+  };
+
+  const removeCartItem = (name) => {
+    setCart((prevCart) => prevCart.filter((p) => p.name !== name));
   };
 
   return (
@@ -51,13 +64,13 @@ function Home() {
           <Card
             key={product.name}
             product={product}
-            quantity={cart[product.name] || 0}
+            quantity={getItemAmount(product.name)}
             addToCart={handleAddToCart}
             decrementItem={decrementItem}
           />
         );
       })}
-      <Cart count={getCount()} cartItems={getCartItems()} />
+      <Cart count={getCount()} cart={cart} removeItem={removeCartItem} />
     </div>
   );
 }

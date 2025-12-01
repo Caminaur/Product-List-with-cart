@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { formatNumber } from "../utils/formatNumber";
 
 export const Card = (props) => {
   const { product, addToCart, quantity, decrementItem } = props;
@@ -41,7 +41,9 @@ export const Card = (props) => {
       <div className="flex flex-col gap-1 my-6">
         <p className="text-sm">{product.category}</p>
         <h3>{product.name}</h3>
-        <p className="text-red font-semibold">$ {product.price}</p>
+        <p className="text-red font-semibold">
+          $ {formatNumber(product.price)}
+        </p>
       </div>
     </article>
   );

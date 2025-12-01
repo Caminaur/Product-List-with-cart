@@ -1,21 +1,18 @@
 import clsx from "clsx";
+import React from "react";
+import { formatNumber } from "../utils/formatNumber";
 export const Cart = (props) => {
-  const { count, cartItems } = props;
+  const { count, cart, removeItem } = props;
   const getItemTotal = (quantity, price) => {
     return parseFloat(price) * parseFloat(quantity); // meter un format
   };
-
-  const getTotal = () => {
-    let total = 0;
-
-    for (const item in cartItems) {
-      if (!Object.hasOwn(cartItems, item)) continue;
-
-      const element = cartItems[item];
-      total += getItemTotal(element.quantity, element.price);
-    }
-    return total;
-  };
+  const getTotal = () =>
+    formatNumber(
+      cart.reduce(
+        (acc, item) => acc + getItemTotal(item.quantity, item.price),
+        0
+      )
+    );
   return (
     <div
       className={clsx(
@@ -44,27 +41,30 @@ export const Cart = (props) => {
         </>
       ) : (
         <div className="flex flex-col justify-start items-start gap-3">
-          {cartItems.map((item, id) => (
-            <>
+          {cart.map((item, id) => (
+            <React.Fragment key={item.name}>
               <div className="flex justify-between w-full" key={id}>
                 <div className="flex w-full flex-col gap-1">
                   <p className="text-rose-900 font-semibold">{item.name}</p>
                   <div className="flex font-semibold gap-2.5">
                     <p className="text-red">{item.quantity}x</p>
-                    <p className="text-rose-300">@ ${item.price}</p>
+                    <p className="text-rose-300">
+                      @ ${formatNumber(item.price)}
+                    </p>
                     <p className="text-rose-500">
-                      ${getItemTotal(item.quantity, item.price)}
+                      ${formatNumber(getItemTotal(item.quantity, item.price))}
                     </p>
                   </div>
                 </div>
                 <img
+                  onClick={() => removeItem(item.name)}
                   className="rounded-2xl border-2 border-rose-300 h-6 p-0.5"
                   src="./images/icon-remove-item.svg"
                   alt=""
                 />
               </div>
               <div className="h-px bg-rose-300 w-full opacity-30"></div>
-            </>
+            </React.Fragment>
           ))}
         </div>
       )}
