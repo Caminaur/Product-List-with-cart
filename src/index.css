@@ -35,9 +35,17 @@
 }
 
 @utility container {
-  @apply p-8 flex flex-col gap-4;
+  @apply p-8 flex flex-col gap-4 lg:flex-row;
 }
 
 @utility card {
-  @apply bg-rose-100 rounded-xl p-4 md:p-6;
+  @apply sm:w-[calc(50%-32px)]
+    md:w-[calc(33%-32px)]
+    lg:w-[calc(33%-32px)]
+    lg:min-w-[220px]
+    max-w-80
+    justify-self-center;
+}
+@utility ellipsis {
+  @apply overflow-hidden text-nowrap whitespace-nowrap text-ellipsis;
 }

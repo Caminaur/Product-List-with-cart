@@ -4,13 +4,13 @@ export const Card = (props) => {
   const { product, addToCart, quantity, decrementItem } = props;
 
   return (
-    <article className="">
-      <figure className="relative">
+    <article className="card">
+      <figure className="relative w-full ">
         <picture>
           <source media="(min-width: 1440px)" srcSet={product.imageDesktop} />
           <source media="(min-width: 376px)" srcSet={product.imageTablet} />
           <img
-            className="rounded-2xl"
+            className="rounded-2xl w-full "
             src={product.imageMobile}
             alt={`Product image ${product.name}`}
           />
@@ -19,7 +19,8 @@ export const Card = (props) => {
         {quantity === 0 ? (
           <button
             onClick={() => addToCart(product.name)}
-            className="absolute w-38 left-1/2 -bottom-6 -translate-x-1/2 flex gap-2 bg-rose-50 p-3 rounded-full border-rose-300 border-2"
+            className="absolute w-38 left-1/2 -bottom-6 -translate-x-1/2 flex gap-2 bg-rose-50 p-3 rounded-full border-rose-300 border-2
+            cursor-pointer hover:brightness-105 duration-300"
             aria-label="Add Item to Cart"
           >
             <img src="./images/icon-add-to-cart.svg" alt="" />
@@ -28,6 +29,7 @@ export const Card = (props) => {
         ) : (
           <div className="absolute left-1/2 -bottom-6 -translate-x-1/2 flex justify-between items-center w-38 bg-red py-3 px-4 rounded-full border-rose-300 border-2">
             <button
+              className="cursor-pointer hover:opacity-80 duration-300"
               onClick={() => decrementItem(product.name)}
               aria-label={`Decrease quantity of ${product.name}`}
             >
@@ -39,6 +41,7 @@ export const Card = (props) => {
             </button>
             <p className="text-rose-50">{quantity}</p>
             <button
+              className="cursor-pointer hover:opacity-80 duration-300"
               aria-label="Add one more Item to Cart"
               onClick={() => addToCart(product.name)}
             >
@@ -54,9 +57,9 @@ export const Card = (props) => {
           </div>
         )}
       </figure>
-      <div className="flex flex-col gap-1 my-6">
+      <div className="flex flex-col gap-1 my-6 min-w-0">
         <p className="text-sm">{product.category}</p>
-        <h3>{product.name}</h3>
+        <h3 className="max-w-2/3 ellipsis">{product.name}</h3>
         <p className="text-red font-semibold">
           $ {formatNumber(product.price)}
         </p>

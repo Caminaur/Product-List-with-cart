@@ -8,9 +8,9 @@ export const Cart = (props) => {
   return (
     <div
       className={clsx(
-        "w-full bg-white flex flex-col p-8 shadow-lg rounded-lg gap-2",
+        "w-full bg-white flex flex-col p-8 shadow-lg rounded-lg gap-2 h-min basis-[33%] lg:basis-1/4 md:min-w-[320px]",
         {
-          "items-center gap-4 text-center aspect-square justify-between":
+          "items-center gap-4 text-center aspect-square justify-between md:aspect-auto":
             count === 0,
           "": count > 0,
         }
@@ -37,9 +37,9 @@ export const Cart = (props) => {
           {cart.map((item, id) => (
             <React.Fragment key={item.name}>
               <div className="flex justify-between w-full">
-                <div className="flex w-full flex-col gap-1">
+                <div className="flex w-full flex-col gap-1 min-w-0">
                   <h3
-                    className="text-rose-900 font-semibold"
+                    className="text-rose-900 font-semibold ellipsis"
                     id={`item-name-${id}`}
                   >
                     {item.name}
@@ -59,7 +59,7 @@ export const Cart = (props) => {
                 </div>
                 <button
                   onClick={() => removeItem(item.name)}
-                  className="rounded-2xl border-2 border-rose-300 h-6 p-0.5 flex items-center justify-center"
+                  className="rounded-2xl border-2 border-rose-300 h-6 p-0.5 flex items-center justify-center cursor-pointer hover:brightness-110 duration-300"
                   aria-label={`Remove ${item.name} from cart`}
                   aria-describedby={`item-info-${id}`}
                 >
@@ -95,7 +95,7 @@ export const Cart = (props) => {
             </h3>
           </div>
           <button
-            className="flex justify-center items-center bg-red py-3 px-4 rounded-full text-rose-50 text-xl"
+            className="flex justify-center items-center bg-red py-3 px-4 rounded-full text-rose-50 text-xl cursor-pointer hover:brightness-110 duration-300"
             aria-label={`Confirm order, ${count} items, total $${total}`}
             onClick={() => orderConfirmed()}
           >
