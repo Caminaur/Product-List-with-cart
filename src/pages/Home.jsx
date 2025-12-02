@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card } from "../Components/Card";
 import { products } from "../data/products";
 import { Cart } from "../Components/Cart";
-import { useEffect } from "react";
 
 function Home() {
   const [cart, setCart] = useState([]);
