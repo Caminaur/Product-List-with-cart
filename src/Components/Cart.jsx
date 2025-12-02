@@ -1,18 +1,10 @@
 import clsx from "clsx";
 import React from "react";
 import { formatNumber } from "../utils/formatNumber";
+import { getItemTotal } from "../utils/getItemTotal";
 export const Cart = (props) => {
-  const { count, cart, removeItem } = props;
-  const getItemTotal = (quantity, price) => {
-    return parseFloat(price) * parseFloat(quantity); // meter un format
-  };
-  const getTotal = () =>
-    formatNumber(
-      cart.reduce(
-        (acc, item) => acc + getItemTotal(item.quantity, item.price),
-        0
-      )
-    );
+  const { count, cart, removeItem, orderConfirmed, total } = props;
+
   return (
     <div
       className={clsx(
@@ -93,7 +85,7 @@ export const Cart = (props) => {
         <>
           <div className="flex justify-between py-4 items-center">
             <p className="text-rose-500 font-semibold">Order Total </p>
-            <p className="text-rose-900 font-bold text-3xl">${getTotal()}</p>
+            <p className="text-rose-900 font-bold text-3xl">${total}</p>
           </div>
           <div className="flex items-start justify-center bg-rose-50 p-2 rounded-md my-6">
             <img src="./images/icon-carbon-neutral.svg" alt="" />
@@ -104,7 +96,8 @@ export const Cart = (props) => {
           </div>
           <button
             className="flex justify-center items-center bg-red py-3 px-4 rounded-full text-rose-50 text-xl"
-            aria-label={`Confirm order, ${count} items, total $${getTotal()}`}
+            aria-label={`Confirm order, ${count} items, total $${total}`}
+            onClick={() => orderConfirmed()}
           >
             Confirm Order
           </button>

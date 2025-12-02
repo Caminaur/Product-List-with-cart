@@ -19,7 +19,7 @@ export const Card = (props) => {
         {quantity === 0 ? (
           <button
             onClick={() => addToCart(product.name)}
-            className="absolute left-1/2 -bottom-6 -translate-x-1/2 flex gap-2 bg-rose-50 p-3 rounded-full border-rose-300 border-2"
+            className="absolute w-38 left-1/2 -bottom-6 -translate-x-1/2 flex gap-2 bg-rose-50 p-3 rounded-full border-rose-300 border-2"
             aria-label="Add Item to Cart"
           >
             <img src="./images/icon-add-to-cart.svg" alt="" />
