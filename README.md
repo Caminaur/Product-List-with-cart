@@ -1,16 +1,64 @@
-# React + Vite
+# Frontend Mentor - Product list with cart Solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Product list with cart challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/)
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [My Solution](#my-solution)
+    - [Desktop](#desktop)
+    - [Mobile](#mobile)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-## React Compiler
+## Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### The challenge
 
-## Expanding the ESLint configuration
+Your users should be able to:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Add items to the cart and remove them
+- Increase/decrease the number of items in the cart
+- See an order confirmation modal when they click "Confirm Order"
+- Reset their selections when they click "Start New Order"
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+
+### My Solution
+
+#### Desktop
+
+<img src='./src/assets/Desktop.png' width='700px' style='border-radius:8px;'/>
+
+#### Mobile
+
+<img src='./src/assets/Mobile.png' width='325px' style='border-radius:8px;'/>
+
+### Links
+
+- Live Site URL: [Live site](url)
+- Solution URL: [Github](https://github.com/Caminaur/)
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Mobile-first workflow
+- [React](https://reactjs.org/)
+- [Tailwind](https://tailwindcss.com/)
+
+### Continued development
+
+Planning and organization proved to make a significant improvement in development time.
+
+## Author
+
+- [Website](https://julian-caminaur.tech/)
+- [Frontend Mentor](https://www.frontendmentor.io/profile/Caminaur)
+- [CSS Battle](https://cssbattle.dev/player/caminaur)
+- [Exercism](https://exercism.org/profiles/Caminaur)
