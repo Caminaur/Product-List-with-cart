@@ -33,7 +33,7 @@ export const Cart = (props) => {
           </p>
         </>
       ) : (
-        <div className="flex flex-col justify-start items-start gap-3">
+        <div className="flex flex-col justify-start items-start gap-3 max-h-80 overflow-scroll">
           {cart.map((item, id) => (
             <React.Fragment key={item.name}>
               <div className="flex justify-between w-full">
@@ -95,7 +95,7 @@ export const Cart = (props) => {
             </h3>
           </div>
           <button
-            className="flex justify-center items-center bg-red py-3 px-4 rounded-full text-rose-50 text-xl cursor-pointer hover:brightness-110 duration-300"
+            className="flex justify-center items-center bg-red py-3 px-4 rounded-full text-rose-50 text-xl cursor-pointer hover:brightness-95 duration-300"
             aria-label={`Confirm order, ${count} items, total $${total}`}
             onClick={() => orderConfirmed()}
           >

@@ -27,6 +27,10 @@ function Home() {
     setOrderConfirmed(false);
   };
 
+  const handleCloseOrderConfirmedModal = () => {
+    setOrderConfirmed(false);
+  };
+
   const getTotal = () =>
     formatNumber(
       cart.reduce(
@@ -121,6 +125,7 @@ function Home() {
             cart={cart}
             total={getTotal()}
             handleStartNewOrder={handleStartNewOrder}
+            handleCloseOrderConfirmedModal={handleCloseOrderConfirmedModal}
           />
         ) : (
           ""

@@ -3,16 +3,20 @@ import { formatNumber } from "../utils/formatNumber";
 import { getItemTotal } from "../utils/getItemTotal";
 
 export const OrderConfirmedModal = (props) => {
-  const { cart, total, handleStartNewOrder } = props;
+  const { cart, total, handleStartNewOrder, handleCloseOrderConfirmedModal } =
+    props;
   return (
     <>
-      <div className="h-screen w-screen fixed top-0 left-0 bg-black/40"></div>
+      <div
+        className="h-screen w-screen fixed top-0 left-0 bg-black/40"
+        onClick={() => handleCloseOrderConfirmedModal()}
+      ></div>
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="order-confirmed-title"
         aria-describedby="order-confirmed-description"
-        className="h-4/5 w-full bg-rose-50 rounded-t-2xl fixed left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-start p-4 gap-6 sm:max-w-110 sm:bottom-1/2 sm:translate-y-1/2 sm:rounded-xl sm:p-8 max-w-110"
+        className="h-4/5 w-full bg-rose-50 rounded-t-2xl fixed left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-start p-4 gap-6 sm:max-w-110 sm:bottom-1/2 sm:translate-y-1/2 sm:rounded-xl sm:p-8 max-w-110 lg:max-h-max"
       >
         <img src="/images/icon-order-confirmed.svg" alt="" aria-hidden="true" />
         <div>
@@ -28,7 +32,7 @@ export const OrderConfirmedModal = (props) => {
         </div>
         <div className="w-full bg-rose-100 rounded-md">
           <div
-            className="overflow-scroll max-h-60 px-4"
+            className="overflow-y-auto max-h-60 px-4 lg:max-h-auto"
             role="list"
             aria-label="Order items"
           >
