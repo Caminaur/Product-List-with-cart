@@ -5,6 +5,7 @@ import { Cart } from "../Components/Cart";
 import { formatNumber } from "../utils/formatNumber";
 import { getItemTotal } from "../utils/getItemTotal";
 import { OrderConfirmedModal } from "../Components/OrderConfirmedModal";
+import Attribution from "../Components/Attribution";
 
 function Home() {
   const [cart, setCart] = useState([]);
@@ -130,6 +131,7 @@ function Home() {
         ) : (
           ""
         )}
+        <Attribution theme="1" />
       </div>
     </>
   );

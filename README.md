@@ -1,6 +1,6 @@
 # Frontend Mentor - Product list with cart Solution
 
-This is a solution to the [Product list with cart challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/)
+This is a solution to the [Product list with cart challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d)
 
 ## Table of contents
 
@@ -8,12 +8,12 @@ This is a solution to the [Product list with cart challenge on Frontend Mentor](
   - [The challenge](#the-challenge)
   - [My Solution](#my-solution)
     - [Desktop](#desktop)
+    - [Tablet](#tablet)
     - [Mobile](#mobile)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
 
 ## Overview
@@ -33,16 +33,20 @@ Your users should be able to:
 
 #### Desktop
 
-<img src='./src/assets/Desktop.png' width='700px' style='border-radius:8px;'/>
+<img src='./src/assets/screenshots/Desktop.png' width='700px' style='border-radius:8px;'/>
+
+#### Tablet
+
+<img src='./src/assets/screenshots/Tablet.png' width='500px' style='border-radius:8px;'/>
 
 #### Mobile
 
-<img src='./src/assets/Mobile.png' width='325px' style='border-radius:8px;'/>
+<img src='./src/assets/screenshots/Mobile.png' width='325px' style='border-radius:8px;'/>
 
 ### Links
 
-- Live Site URL: [Live site](url)
-- Solution URL: [Github](https://github.com/Caminaur/)
+- Live Site URL: [Live site](https://products-and-cart-caminaur.netlify.app/)
+- Solution URL: [Github](https://github.com/Caminaur/Product-List-with-cart)
 
 ### Built with
 

@@ -33,7 +33,7 @@ export const Cart = (props) => {
           </p>
         </>
       ) : (
-        <div className="flex flex-col justify-start items-start gap-3 max-h-80 overflow-scroll">
+        <div className="flex flex-col justify-start items-start gap-3 max-h-80 overflow-y-scroll">
           {cart.map((item, id) => (
             <React.Fragment key={item.name}>
               <div className="flex justify-between w-full">
